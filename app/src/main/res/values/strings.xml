@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">NBAPP</string>
+    <string name="action_settings">About me</string>
+    <string name="title_activity_logo" translatable="false">LogoActivity</string>
+    <string name="title_activity_listado" translatable="false">ListadoActivity</string>
+    <string name="title_activity_formulario" translatable="false">FormularioActivity</string>
+</resources>
