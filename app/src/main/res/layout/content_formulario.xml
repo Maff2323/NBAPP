@@ -9,17 +9,18 @@
     tools:showIn="@layout/activity_formulario">
 
     <Button
-        android:id="@+id/buttonGuardar2"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="108dp"
-        android:text="CANCELAR"
+        android:id="@+id/buttonEliminar"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/cancelarFormu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        style="@style/CodeFont"
         android:id="@+id/topeSalarial"
+        style="@style/CodeFont"
         android:layout_width="147dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
@@ -27,60 +28,53 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Conferencia"
+        android:text="@string/conferenciaFormu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopeSalarial"
-        tools:text="Conferencia" />
+        tools:text="@string/conferenciaFormulario" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="54dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="72dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        android:layout_width="52dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/toggleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@android:drawable/ic_secure" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="52dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <EditText
         android:id="@+id/nombreDueno"
-        android:layout_width="243dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="246dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="Nombre del dueño"
+        android:hint="@string/nDuenoFormu"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.816"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="54dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@android:drawable/ic_menu_day" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="52dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloAnadir"
         app:srcCompat="@android:drawable/ic_menu_edit" />
@@ -92,19 +86,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="Fecha de creación"
+        android:hint="@string/hintFechaFormu"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFecha"
         app:layout_constraintTop_toBottomOf="@+id/nombreDueno" />
 
     <TextView
         android:id="@+id/tituloAnadir"
         android:layout_width="198dp"
         android:layout_height="32dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="72dp"
         android:clickable="false"
         android:fontFamily="serif"
-        android:text="AÑADIR EQUIPO"
+        android:text="@string/tituloFormu"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
@@ -113,13 +108,14 @@
     <EditText
         android:id="@+id/TopeSalarial"
         android:layout_width="242dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="Tope salarial"
+        android:hint="@string/tSalarialFormu"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/Fechadecreación" />
 
     <ToggleButton
@@ -129,20 +125,21 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:text="ToggleButton"
-        android:textOff="ESTE"
-        android:textOn="OESTE"
+        android:textOff="@string/EsteFormu"
+        android:textOn="@string/OesteFormu"
         app:layout_constraintEnd_toStartOf="@+id/topeSalarial"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TopeSalarial" />
 
     <Button
         android:id="@+id/botonGuardar"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
-        android:text="GUARDAR"
+        android:layout_marginTop="40dp"
+        android:text="@string/GuardarFormu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -156,29 +153,82 @@
 
     <TextView
         android:id="@+id/SelecionarImagen"
-        android:layout_width="115dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:text="Selecionar imagen"
-        app:layout_constraintStart_toStartOf="@+id/toggleButton"
+        android:layout_width="112dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/selecImagenFormu"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton"
         tools:text="Selecionar imagen" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="264dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="266dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nombre"
-            android:layout_width="239dp"
+            android:layout_width="246dp"
             android:layout_height="44dp"
-            android:text="Nombre del equipo" />
+            android:hint="@string/nombreFormu" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/imageFecha"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_day" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="230dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="32dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topeSalarial"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ScrollView
+        android:layout_width="21dp"
+        android:layout_height="678dp"
+        android:layout_marginStart="388dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

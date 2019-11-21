@@ -90,6 +90,8 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Log.i("", "Nuevo!");
+                Intent intent = new Intent(ListadoActivity.this, AboutMeActivityMenu.class);
+                startActivity(intent);
                 return true;
             case R.id.action_settingsConfig:
                 Log.i("", "Config!");
@@ -101,10 +103,26 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
 
             case R.id.action_settingsSearch:
                 Log.i("", "Search!");
+                Intent intentS= new Intent(ListadoActivity.this, SearchActivityMenu.class);
+                startActivity(intentS);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-}
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.d(TAG,"onBackPressed...");
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        Log.d(TAG,"onSupportnavigateUp...");
+        return super.onSupportNavigateUp();
+    }
 }

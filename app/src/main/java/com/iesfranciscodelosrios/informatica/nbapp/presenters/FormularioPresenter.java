@@ -2,8 +2,6 @@ package com.iesfranciscodelosrios.informatica.nbapp.presenters;
 
 import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormularioInterface;
 
-
-
 public class FormularioPresenter implements FormularioInterface.Presenter{
 
     private FormularioInterface.View view;
@@ -16,6 +14,8 @@ public class FormularioPresenter implements FormularioInterface.Presenter{
     public void botonGuardar(){
         view.botonGuardar();
     }
-
+    public void UpButton(){
+        view.UpButton();
+    }
 
 }

@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_formulario">
 
     <Button
-        android:id="@+id/buttonGuardar2"
+        android:id="@+id/buttonEliminar"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginTop="96dp"
@@ -38,8 +38,8 @@
         android:layout_width="54dp"
         android:layout_height="53dp"
         android:layout_marginTop="72dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageFecha"
+        app:layout_constraintTop_toTopOf="@+id/imageFecha"
         app:srcCompat="@android:drawable/ic_secure" />
 
     <ImageView
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/NombreEquipo" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageFecha"
         android:layout_width="54dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -114,7 +114,7 @@
         android:id="@+id/tituloAnadir"
         android:layout_width="198dp"
         android:layout_height="32dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="232dp"
         android:clickable="false"
         android:fontFamily="serif"
         android:text="AÑADIR EQUIPO"
@@ -148,10 +148,10 @@
 
     <Button
         android:id="@+id/botonGuardar"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="400dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="91dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="408dp"
+        android:layout_marginTop="92dp"
         android:text="GUARDAR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen" />
@@ -168,8 +168,8 @@
 
     <TextView
         android:id="@+id/SelecionarImagen"
-        android:layout_width="115dp"
-        android:layout_height="28dp"
+        android:layout_width="121dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
         android:text="Selecionar imagen"

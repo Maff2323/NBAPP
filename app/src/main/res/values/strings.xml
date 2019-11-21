@@ -4,4 +4,28 @@
     <string name="title_activity_logo" translatable="false">LogoActivity</string>
     <string name="title_activity_listado" translatable="false">ListadoActivity</string>
     <string name="title_activity_formulario" translatable="false">FormularioActivity</string>
+    <string name="descripcionAbout">Somos unas ratas y solo queremos sacaros el dinero gracias por venir</string>
+    <string name="emailAbout">NBApp.gmail.com</string>
+    <string name="contactaAbout">Contacta con nosotros</string>
+    <string name="ntelefonoAbout">935848945</string>
+    <string name="conferenciaFormulario">Conferencia</string>
+    <string name="hintFechaFormu">Fecha de creación</string>
+    <string name="tituloFormu">AÑADIR EQUIPO</string>
+    <string name="tSalarialFormu">Tope salarial</string>
+    <string name="EsteFormu">ESTE</string>
+    <string name="OesteFormu">OESTE</string>
+    <string name="GuardarFormu">GUARDAR</string>
+    <string name="selecImagenFormu">Selecionar imagen</string>
+    <string name="nombreFormu">Nombre del equipo</string>
+    <string name="nDuenoFormu">Nombre del dueño</string>
+    <string name="conferenciaFormu">Conferencia</string>
+    <string name="cancelarFormu">ELIMINAR</string>
+    <string name="filtrarNombre">Filtrar por Nombre</string>
+    <string name="fechaCreacionSearch">Fecha de creación</string>
+    <string name="filtrarSearch">Filtrar</string>
+    <string name="buscarSearch">BUSCAR</string>
+    <string name="titlulo_pickers">Obtener fecha y hora</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
+
 </resources>
