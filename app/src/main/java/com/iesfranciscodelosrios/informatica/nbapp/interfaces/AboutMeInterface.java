@@ -3,12 +3,13 @@ package com.iesfranciscodelosrios.informatica.nbapp.interfaces;
 public interface AboutMeInterface {
 
         public interface View {
-            void textView6();
+            void UpButton();
 
         }
         public interface Presenter {
-            void textView6();
+            void UpButton();
         }
+
     }
 
 

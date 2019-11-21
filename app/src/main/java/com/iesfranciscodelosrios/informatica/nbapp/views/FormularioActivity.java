@@ -1,5 +1,8 @@
 package com.iesfranciscodelosrios.informatica.nbapp.views;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,17 +13,23 @@ import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormularioInterfac
 import com.iesfranciscodelosrios.informatica.nbapp.presenters.FormularioPresenter;
 
 import android.app.DatePickerDialog;;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
+import android.widget.Spinner;
 
 
 public class FormularioActivity extends AppCompatActivity implements FormularioInterface.View,View.OnClickListener {
@@ -40,11 +49,20 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     EditText Fechadecreación;
     ImageButton imageFecha;
 
+    private Context myContext;
+    private Spinner spinner;
+    private ArrayAdapter<String> adapter;
+    Button buttonAdd;
+
     TextInputLayout TextNombre;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
+
+        final AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Widget EditText donde se mostrara la fecha obtenida
@@ -55,19 +73,20 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         imageFecha.setOnClickListener(this);
 
         TextNombre = (TextInputLayout) findViewById(R.id.textInputLayout);
-        presenter=new FormularioPresenter(this);
+
+        presenter = new FormularioPresenter(this);
         presenter.UpButton();
 
-        Button button=findViewById(R.id.botonGuardar);
+        Button button = findViewById(R.id.botonGuardar);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.botonGuardar();
             }
         });
-        
 
-        TextInputEditText nombre= (TextInputEditText) findViewById(R.id.nombre);
+
+        TextInputEditText nombre = (TextInputEditText) findViewById(R.id.nombre);
         nombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -84,7 +103,93 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                 }
             }
         });
+        Button eliminar = findViewById(R.id.buttonEliminar);
+        eliminar.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+
+                dialogo1.setTitle("ATENCION!");
+                dialogo1.setMessage("Va a eliminar los datos introducidos esta seguro?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        Aceptar();
+                    }
+
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int buttonEliminar) {
+                        Cancelar();
+                    }
+                });
+                dialogo1.show();
+            }
+
+            public void Aceptar() {
+
+                finish();
+            }
+
+            public void Cancelar() {
+
+
+            }
+        });
+
+        // Definición de la lista de opciones
+        ArrayList<String> items = new ArrayList<String>();
+        items.add("Opción 1");
+
+
+        // Definición del Adaptador que contiene la lista de opciones
+        adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, items);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
+        // Definición del Spinner
+        spinner = (Spinner) findViewById(R.id.spinnerAdd);
+        spinner.setAdapter(adapter);
+
+        // Definición de la acción del botón
+        buttonAdd = findViewById(R.id.spinnerAdd);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
+                LayoutInflater layoutActivity = LayoutInflater.from(myContext);
+                View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
+
+                // Definición del AlertDialog
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(myContext);
+
+                // Asignación del AlertDialog a su vista
+                alertDialog.setView(viewAlertDialog);
+
+                // Recuperación del EditText del AlertDialog
+                final EditText dialogInput = (EditText) viewAlertDialog.findViewById(R.id.dialogInput);
+
+                // Configuración del AlertDialog
+                alertDialog
+                        .setCancelable(false)
+                        // Botón Añadir
+                        .setPositiveButton(getResources().getString(R.string.add_new_option),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        adapter.add(dialogInput.getText().toString());
+                                        spinner.setSelection(adapter.getPosition(dialogInput.getText().toString()));
+                                    }
+                                })
+                        // Botón Cancelar
+                        .setNegativeButton(getResources().getString(R.string.cancel),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialogBox, int id) {
+                                        dialogBox.cancel();
+                                    }
+                                })
+                        .create()
+                        .show();
+            }
+        });
     }
     @Override
     public void botonGuardar() {
@@ -180,5 +285,8 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             recogerFecha.show();
 
         }
+
+
+
 
     }

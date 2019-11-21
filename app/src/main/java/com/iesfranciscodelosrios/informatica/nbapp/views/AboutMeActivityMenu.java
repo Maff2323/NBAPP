@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.iesfranciscodelosrios.informatica.nbapp.R;
+import com.iesfranciscodelosrios.informatica.nbapp.interfaces.AboutMeInterface;
+import com.iesfranciscodelosrios.informatica.nbapp.presenters.AboutMePresenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,8 +14,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-public class AboutMeActivityMenu extends AppCompatActivity {
+public class AboutMeActivityMenu extends AppCompatActivity implements AboutMeInterface.View {
     String TAG="NBApp/AboutMeActivityMenu";
+    private AboutMeInterface.Presenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,8 @@ public class AboutMeActivityMenu extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        presenter=new AboutMePresenter(this);
+        presenter.UpButton();
     }
 
     @Override
@@ -52,5 +57,22 @@ public class AboutMeActivityMenu extends AppCompatActivity {
     protected  void onDestroy(){
         super.onDestroy();
         Log.d(TAG,"onDestroy...");
+    }
+    public void UpButton() {
+        Log.d(TAG, "Lanzando Formulario..");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.d(TAG,"onBackPressed...");
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        Log.d(TAG,"onSupportnavigateUp...");
+        return super.onSupportNavigateUp();
     }
 }

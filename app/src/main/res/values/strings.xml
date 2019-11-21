@@ -4,7 +4,7 @@
     <string name="title_activity_logo" translatable="false">LogoActivity</string>
     <string name="title_activity_listado" translatable="false">ListadoActivity</string>
     <string name="title_activity_formulario" translatable="false">FormularioActivity</string>
-    <string name="descripcionAbout">Somos unas ratas y solo queremos sacaros el dinero gracias por venir</string>
+    <string name="descripcionAbout">Somos una compañia consolidada en el mundo deportivo y por tal motivo hemos decidido dar el salto a las aplicaciones para llevar a nuestros usuarios al siguiente nivel infornacion seg a seg</string>
     <string name="emailAbout">NBApp.gmail.com</string>
     <string name="contactaAbout">Contacta con nosotros</string>
     <string name="ntelefonoAbout">935848945</string>
@@ -27,5 +27,8 @@
     <string name="titlulo_pickers">Obtener fecha y hora</string>
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+    <string name="add_new_option">add_new_option</string>
+    <string name="your_option">your_option</string>
+    <string name="cancel">cancel</string>
 
 </resources>

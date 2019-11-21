@@ -12,11 +12,12 @@
         android:id="@+id/buttonEliminar"
         android:layout_width="110dp"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="92dp"
         android:text="@string/cancelarFormu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddSpinner" />
 
     <EditText
         android:id="@+id/topeSalarial"
@@ -136,10 +137,11 @@
         android:layout_width="110dp"
         android:layout_height="70dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="42dp"
         android:text="@string/GuardarFormu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAdd" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -158,6 +160,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:text="@string/selecImagenFormu"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toggleButton"
         tools:text="Selecionar imagen" />
@@ -193,28 +196,18 @@
         app:srcCompat="@android:drawable/ic_menu_day" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="230dp"
-        android:layout_height="36dp"
+        android:id="@+id/spinnerAdd"
+        android:layout_width="194dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="32dp"
         android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen"
         tools:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="35dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topeSalarial"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="21dp"
         android:layout_height="678dp"
         android:layout_marginStart="388dp"
@@ -230,5 +223,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
+
+    <ImageButton
+        android:id="@+id/buttonAddSpinner"
+        android:layout_width="38dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinnerAdd"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

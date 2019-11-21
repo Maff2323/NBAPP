@@ -10,11 +10,10 @@ public class AboutMePresenter implements AboutMeInterface.Presenter{
         this.view = view;
     }
 
-
-    @Override
-    public void textView6() {
-
+    public void UpButton(){
+        view.UpButton();
     }
+
 }
 
 
