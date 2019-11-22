@@ -31,6 +31,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.widget.Spinner;
 
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonAddSpinner;
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.spinnerAdd;
+
 
 public class FormularioActivity extends AppCompatActivity implements FormularioInterface.View,View.OnClickListener {
     private FormularioInterface.Presenter presenter;
@@ -49,10 +52,10 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     EditText Fechadecreación;
     ImageButton imageFecha;
 
-    private Context myContext;
+    private Context myContext=this;
     private Spinner spinner;
     private ArrayAdapter<String> adapter;
-    Button buttonAdd;
+    ImageButton buttonAdd;
 
     TextInputLayout TextNombre;
     @SuppressLint("WrongViewCast")
@@ -137,9 +140,7 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             }
         });
 
-        // Definición de la lista de opciones
         ArrayList<String> items = new ArrayList<String>();
-        items.add("Opción 1");
 
 
         // Definición del Adaptador que contiene la lista de opciones
@@ -147,14 +148,14 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         // Definición del Spinner
-        spinner = (Spinner) findViewById(R.id.spinnerAdd);
+        spinner = (Spinner) findViewById(spinnerAdd);
         spinner.setAdapter(adapter);
 
         // Definición de la acción del botón
-        buttonAdd = findViewById(R.id.spinnerAdd);
+        buttonAdd = (ImageButton) findViewById(buttonAddSpinner);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View w) {
                 // Recuperación de la vista del AlertDialog a partir del layout de la Actividad
                 LayoutInflater layoutActivity = LayoutInflater.from(myContext);
                 View viewAlertDialog = layoutActivity.inflate(R.layout.alert_dialog, null);
@@ -190,6 +191,9 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                         .show();
             }
         });
+
+
+
     }
     @Override
     public void botonGuardar() {

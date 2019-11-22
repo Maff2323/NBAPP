@@ -25,4 +25,7 @@
     <string name="titlulo_pickers">Get date and time</string>
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
+    <string name="add_new_option">add_new_option</string>
+    <string name="your_option">your_option</string>
+    <string name="cancel">cancel</string>
 </resources>
