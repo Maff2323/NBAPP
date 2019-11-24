@@ -27,8 +27,8 @@
     <string name="titlulo_pickers">Obtener fecha y hora</string>
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="formato_hora">hh:mm</string>
-    <string name="add_new_option">add_new_option</string>
-    <string name="your_option">your_option</string>
-    <string name="cancel">cancel</string>
+    <string name="add_new_option">Añadir</string>
+    <string name="your_option">Nueva opcion</string>
+    <string name="cancel">Cancelar</string>
 
 </resources>

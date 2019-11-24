@@ -202,6 +202,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="32dp"
         android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen"
         tools:visibility="visible" />
@@ -227,11 +228,12 @@
     <ImageButton
         android:id="@+id/buttonAddSpinner"
         android:layout_width="38dp"
-        android:layout_height="39dp"
+        android:layout_height="47dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="92dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerAdd"
+        app:layout_constraintHorizontal_bias="0.334"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
         app:srcCompat="@android:drawable/ic_input_add" />
 

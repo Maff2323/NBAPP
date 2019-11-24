@@ -1,6 +1,6 @@
 package com.iesfranciscodelosrios.informatica.nbapp.views;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -58,7 +58,7 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     ImageButton buttonAdd;
 
     TextInputLayout TextNombre;
-    @SuppressLint("WrongViewCast")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +96,7 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                 if (!hasFocus) {
                     TextInputEditText et = (TextInputEditText) view;
                     Log.d("AppCRUD", et.getText().toString());
-                    if (et.getText().toString().startsWith("migue")) {
+                    if (et.getText().toString().startsWith("Incorrecto")) {
                         TextInputLayout textInputLayout = (TextInputLayout) findViewById(R.id.textInputLayout);
                         textInputLayout.setError("Nombre incorrecto");
                     } else {
