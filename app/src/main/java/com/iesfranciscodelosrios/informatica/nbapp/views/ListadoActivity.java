@@ -6,10 +6,13 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.iesfranciscodelosrios.informatica.nbapp.R;
 import com.iesfranciscodelosrios.informatica.nbapp.interfaces.ListadoInterface;
+import com.iesfranciscodelosrios.informatica.nbapp.models.PersonR;
 import com.iesfranciscodelosrios.informatica.nbapp.presenters.ListadoPresenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.Menu;
@@ -17,10 +20,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class ListadoActivity extends AppCompatActivity implements ListadoInterface.View {
 
     String TAG="NBApp/ListadoActivity";
     private ListadoInterface.Presenter presenter;
+    private RecyclerView recyclerView;
+    private ArrayList<PersonR> items;
+    private PersonAdapter adaptador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,8 +36,36 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
         setContentView(R.layout.activity_listado);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         presenter =new ListadoPresenter(this);
+
+
+        // Inicializa el RecyclerView
+        recyclerView = (RecyclerView) findViewById(R.id.listadoRecyclerView);
+
+        // Crea el Adaptador con los datos de la lista anterior
+         items = presenter.getAllPerson();
+         adaptador = new PersonAdapter(items);
+
+
+        // Asocia el elemento de la lista con una acción al ser pulsado
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Acción al pulsar el elemento
+                int position = recyclerView.getChildAdapterPosition(v);
+                Log.d(TAG,"Click RV: " + items.get(position).getId().toString());
+                presenter.onClickRecyclerView(items.get(position).getId());
+            }
+        });
+
+
+        // Asocia el Adaptador al RecyclerView
+        recyclerView.setAdapter(adaptador);
+
+        // Muestra el RecyclerView en vertical
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         // BOTÓN!
         FloatingActionButton fab = findViewById(R.id.ListadoAnadir); //Encontrar vista por su ID
         fab.setOnClickListener(new View.OnClickListener() {
@@ -38,8 +74,11 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
                 Log.d(TAG,"Pulsando botón flotante..");
                 presenter.onClickAdd();
 
+
             }
         });
+
+
 
     }
     @Override
@@ -75,11 +114,17 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
 
 
     @Override
-    public void lanzarFormulario() {
+    public void lanzarFormulario(int id) {
         Log.d(TAG,"Lanzando Formulario..");
-        Intent intent = new Intent(ListadoActivity.this, FormularioActivity.class);
-        startActivity(intent);
-    }
+        if(id==-1) {
+            Intent intent = new Intent(ListadoActivity.this, FormularioActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(ListadoActivity.this, FormularioActivity.class);
+            startActivity(intent);
+            //BUNDLE
+        }
+        }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
@@ -125,4 +170,5 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
         Log.d(TAG,"onSupportnavigateUp...");
         return super.onSupportNavigateUp();
     }
+
 }
