@@ -1,5 +1,6 @@
 package com.iesfranciscodelosrios.informatica.nbapp.views;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -29,6 +30,8 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
     private RecyclerView recyclerView;
     private ArrayList<PersonR> items;
     private PersonAdapter adaptador;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

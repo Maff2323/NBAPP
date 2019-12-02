@@ -1,9 +1,11 @@
 package com.iesfranciscodelosrios.informatica.nbapp.views;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,11 +29,15 @@ import java.util.Calendar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonAddSpinner;
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.imageButton;
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.spinnerAdd;
 
 
@@ -59,6 +65,10 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
 
     TextInputLayout TextNombre;
 
+    ImageButton imageButton;
+
+    final private int CODE_READ_EXTERNAL_STORAGE_PERMISSION=123;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +86,16 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         imageFecha.setOnClickListener(this);
 
         TextNombre = (TextInputLayout) findViewById(R.id.textInputLayout);
+
+        imageButton=(ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                presenter.onClickImage(myContext);
+            }
+        });
+
 
         presenter = new FormularioPresenter(this);
         presenter.UpButton();
@@ -289,8 +309,24 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             recogerFecha.show();
 
         }
+    public void onClickImage(View v) {
+        presenter.onClickImage(myContext);
 
+    }
+    public void requestPermission(){
+        ActivityCompat.requestPermissions(FormularioActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, CODE_READ_EXTERNAL_STORAGE_PERMISSION);
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case CODE_READ_EXTERNAL_STORAGE_PERMISSION:
+                presenter.resultPermission(grantResults[0]);
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
 
 
     }

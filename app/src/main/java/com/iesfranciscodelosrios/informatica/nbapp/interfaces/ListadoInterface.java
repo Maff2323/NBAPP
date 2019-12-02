@@ -9,6 +9,7 @@ public interface ListadoInterface{
     public interface View {
         void lanzarFormulario(int id);
 
+
     }
 
     public interface Presenter {

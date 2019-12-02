@@ -1,8 +1,13 @@
 package com.iesfranciscodelosrios.informatica.nbapp.views;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,16 +31,24 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
 
             private TextView TextView_id;
             private TextView TextView_nEquipo;
+            private ImageView imageView;
+
+
 
             public PersonViewHolder(View itemView) {
                 super(itemView);
                 TextView_id = (TextView) itemView.findViewById(R.id.textViewNombre);
                 TextView_nEquipo= (TextView) itemView.findViewById(R.id.textViewtSalarial);
+                imageView=(ImageView) itemView.findViewById(R.id.imageViewListado);
+
             }
 
             public void PersonBind(PersonR item) {
                 TextView_id.setText(item.getnEquipo().toString());
                 TextView_nEquipo.setText(item.gettSalarial().toString());
+                byte[] decodedString = Base64.decode((item.getImage()), Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                imageView.setImageBitmap(decodedByte);
             }
         }
 
