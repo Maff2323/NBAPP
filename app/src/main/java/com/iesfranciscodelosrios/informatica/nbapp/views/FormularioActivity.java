@@ -2,10 +2,13 @@ package com.iesfranciscodelosrios.informatica.nbapp.views;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -23,22 +26,22 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonAddSpinner;
-import static com.iesfranciscodelosrios.informatica.nbapp.R.id.imageButton;
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.spinnerAdd;
+
+
 
 
 public class FormularioActivity extends AppCompatActivity implements FormularioInterface.View,View.OnClickListener {
@@ -48,6 +51,14 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     private static final String BARRA = "/";
     //Calendario para obtener fecha & hora
     public final Calendar c = Calendar.getInstance();
+
+
+
+    private static final int REQUEST_CAPTURE_IMAGE = 200;
+    private static final int REQUEST_SELECT_IMAGE = 201;
+    private Uri uri;
+
+
 
     //Variables para obtener la fecha
     final int mes = c.get(Calendar.MONTH);
@@ -328,5 +339,63 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         }
     }
 
+    public void launchGallery(){
+        // Se le pide al sistema una imagen del dispositivo
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(intent, getResources().getString(R.string.selecImagenFormu)), REQUEST_SELECT_IMAGE);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+
+            case (REQUEST_CAPTURE_IMAGE):
+                if (resultCode == FormularioActivity.RESULT_OK) {
+                    // Se carga la imagen desde un objeto URI al imageView
+                    ImageView imageView = findViewById(R.id.imageButton);
+                    imageView.setImageURI(uri);
+
+                    // Se le envía un broadcast a la Galería para que se actualice
+                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    mediaScanIntent.setData(uri);
+                    sendBroadcast(mediaScanIntent);
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    // Se borra el archivo temporal
+                    File file = new File(uri.getPath());
+                    file.delete();
+                }
+                break;
+
+            case (REQUEST_SELECT_IMAGE):
+                if (resultCode == Activity.RESULT_OK) {
+                    // Se carga la imagen desde un objeto Bitmap
+                    Uri selectedImage = data.getData();
+                    String selectedPath = selectedImage.getPath();
+
+                    if (selectedPath != null) {
+                        // Se leen los bytes de la imagen
+                        InputStream imageStream = null;
+                        try {
+                            imageStream = getContentResolver().openInputStream(selectedImage);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Se transformam los bytes de la imagen a un Bitmap
+                        Bitmap bmp = BitmapFactory.decodeStream(imageStream);
+
+                        // Se carga el Bitmap en el ImageView
+                        ImageView imageView = findViewById(R.id.imageButton);
+                        imageView.setImageBitmap(bmp);
+                    }
+                }
+                break;
+        }
 
     }
+
+
+}

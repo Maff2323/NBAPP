@@ -1,6 +1,7 @@
 package com.iesfranciscodelosrios.informatica.nbapp.interfaces;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 
 public interface FormularioInterface {
@@ -9,6 +10,7 @@ public interface FormularioInterface {
         void botonGuardar();
         void UpButton();
         void requestPermission();
+        void launchGallery();
 
     }
     public interface Presenter {
@@ -16,6 +18,8 @@ public interface FormularioInterface {
         void UpButton();
         void onClickImage(Context myContext);
         void resultPermission(int result);
+
+        void onActivityResult(int requestCode, int resultCode, Intent data);
     }
 
 

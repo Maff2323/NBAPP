@@ -21,11 +21,14 @@
             android:id="@+id/textViewNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@tools:sample/lorem[3]" />
+            tools:text="@tools:sample/lorem[3]"
+            style="@style/stiloPropio"/>
         <TextView
             android:id="@+id/textViewtSalarial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@tools:sample/lorem[4]" />
+            tools:text="@tools:sample/lorem[4]"
+            style="@style/stiloPropio"/>
+
     </LinearLayout>
 </LinearLayout>
