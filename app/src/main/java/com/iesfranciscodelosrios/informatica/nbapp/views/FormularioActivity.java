@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -59,7 +60,6 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     private Uri uri;
 
 
-
     //Variables para obtener la fecha
     final int mes = c.get(Calendar.MONTH);
     final int dia = c.get(Calendar.DAY_OF_MONTH);
@@ -68,15 +68,13 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     //Widgets
     EditText Fechadecreación;
     ImageButton imageFecha;
-
     private Context myContext=this;
     private Spinner spinner;
     private ArrayAdapter<String> adapter;
     ImageButton buttonAdd;
-
     TextInputLayout TextNombre;
-
     ImageButton imageButton;
+    private Bitmap bmp;
 
     final private int CODE_READ_EXTERNAL_STORAGE_PERMISSION=123;
 
@@ -107,7 +105,6 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             }
         });
 
-
         presenter = new FormularioPresenter(this);
         presenter.UpButton();
 
@@ -135,8 +132,12 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                         textInputLayout.setError("");
                     }
                 }
+
+
+
             }
         });
+
         Button eliminar = findViewById(R.id.buttonEliminar);
         eliminar.setOnClickListener(new View.OnClickListener() {
 
@@ -223,6 +224,16 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             }
         });
 
+        if(imageButton.getDrawable() == null){
+            imageButton.setImageResource(R.drawable.nbapp);
+        }
+        ImageButton ib= findViewById(R.id.imageButton);
+        BitmapDrawable bmDr=(BitmapDrawable) ib.getDrawable();
+        if (bmDr != null){
+            bmp=bmDr.getBitmap();
+        }else{
+            bmp=null;
+        }
 
 
     }

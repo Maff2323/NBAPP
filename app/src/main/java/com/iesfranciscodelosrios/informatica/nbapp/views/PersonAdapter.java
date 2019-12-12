@@ -46,9 +46,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             public void PersonBind(PersonR item) {
                 TextView_id.setText(item.getnEquipo().toString());
                 TextView_nEquipo.setText(item.gettSalarial().toString());
-                byte[] decodedString = Base64.decode((item.getImage()), Base64.DEFAULT);
-                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                imageView.setImageBitmap(decodedByte);
+                try{
+                    byte[] decodedString = Base64.decode((item.getImage()), Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                    imageView.setImageBitmap(decodedByte);
+                }catch (Exception e){
+                    imageView.setImageResource(R.drawable.nbapp);
+                }
+
             }
         }
 

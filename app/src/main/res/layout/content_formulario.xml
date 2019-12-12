@@ -168,7 +168,7 @@
         android:layout_marginEnd="132dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topeSalarial"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/SelecionarImagen"
