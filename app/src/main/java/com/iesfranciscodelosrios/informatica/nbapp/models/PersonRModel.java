@@ -2,16 +2,29 @@ package com.iesfranciscodelosrios.informatica.nbapp.models;
 
 
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.iesfranciscodelosrios.informatica.nbapp.views.MyApplication;
+
 import java.util.ArrayList;
 
-public class PersonRModel {
+import javax.security.auth.callback.Callback;
+
+public class PersonRModel extends SQLiteOpenHelper {
 
 
 
         private String TAG = "PersonRModel";
+        private static final String DATABASE_NAME = "nbaDB";
+        private static final int DATABASE_VERSION = 1;
+        private static PersonRModel sInstance;
 
-        public PersonRModel () {
-        }
+
+
 
         public ArrayList<PersonR> getAllPerson() {
            ArrayList<PersonR> list=new ArrayList<>();
@@ -112,6 +125,70 @@ public class PersonRModel {
 
             return list;
         }
+
+
+
+
+        private PersonRModel(Context context) {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+
+        public static synchronized PersonRModel getInstance() { //quitar la variable del contexto y crearla global
+            // Use the application context, which will ensure that you
+            // don't accidentally leak an Activity's context.
+            // See this article for more information: http://bit.ly/6LRzfx
+            if (sInstance == null) {
+                sInstance = new PersonRModel(MyApplication.getContext()); //esto ha acmabiado
+            }
+            return sInstance;
+        }
+
+        @Override
+        public void onConfigure(SQLiteDatabase db) {
+            super.onConfigure(db);
+            db.setForeignKeyConstraintsEnabled(true);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) { //se ejecuta una vez y yasta, eliminar caché o el fichero oculto (carpeta data/data/y busca la aplicacion.)
+            String CREATE_TABLE_EQUIPO="CREATE TABLE Equipo (" +
+                    "id INTEGER PRIMARY  KEY AUTOINCREMENT,"+
+                    "nombre TEXT"+
+                    ")";
+            db.execSQL(CREATE_TABLE_EQUIPO);
+        }
+
+        @Override //actualiza si hay un cambio de version
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    public boolean addEquipo(PersonR p){
+        SQLiteDatabase db = getWritableDatabase();
+        boolean correcto=true;
+        try {
+            // The user might already exist in the database (i.e. the same user created multiple posts).
+
+            ContentValues values = new ContentValues();
+            values.put("nombre",p.getnEquipo());
+            // values.put(KEY_POST_TEXT, post.text);
+
+            // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
+            db.insertOrThrow("Equipo", null, values);
+            db.setTransactionSuccessful();
+            Log.d("TAG BUENO", "Error while trying to add post to database");
+        } catch (Exception e) {
+            Log.d("TAG", "Error while trying to add post to database");
+            correcto=false;
+            db.close();
+        } finally {
+            db.endTransaction();
+        }
+        return correcto;
+    }
+
+
+
+
 
 
 

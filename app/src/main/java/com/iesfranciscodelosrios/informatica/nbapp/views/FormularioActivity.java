@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.iesfranciscodelosrios.informatica.nbapp.R;
 import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormularioInterface;
+import com.iesfranciscodelosrios.informatica.nbapp.models.PersonR;
 import com.iesfranciscodelosrios.informatica.nbapp.presenters.FormularioPresenter;
 
 import android.app.DatePickerDialog;;
@@ -75,7 +76,7 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     TextInputLayout TextNombre;
     ImageButton imageButton;
     private Bitmap bmp;
-
+    TextInputEditText nombre;
     final private int CODE_READ_EXTERNAL_STORAGE_PERMISSION=123;
 
     @Override
@@ -109,10 +110,14 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         presenter.UpButton();
 
         Button button = findViewById(R.id.botonGuardar);
+        nombre=(TextInputEditText)findViewById(R.id.nombre);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.botonGuardar();
+                PersonR p = new PersonR();
+                p.setnEquipo(nombre.getText().toString());
+                presenter.botonGuardar(p);
             }
         });
 
@@ -235,6 +240,11 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             bmp=null;
         }
 
+
+        PersonR p = new PersonR();
+        p.setnEquipo(nombre.getText().toString());
+        Log.d(TAG,"Pulsando boton flotante...");
+        presenter.botonGuardar(p);// esto en el boton guardar en el oncreate
 
     }
     @Override

@@ -16,8 +16,14 @@ public class PersonR {
             return id;
         }
 
-        public void setId(Integer id) {
-            this.id = id;
+        public boolean setId(Integer id) {
+
+            if(id==id){
+                this.id = id;
+                return true;
+            }else{
+                return false;
+            }
         }
 
         public String getImage() {
@@ -32,16 +38,26 @@ public class PersonR {
             return nEquipo;
         }
 
-        public void setnEquipo(String nEquipo) {
+        public boolean setnEquipo(String nEquipo) {
+            if(nEquipo==""){
             this.nEquipo = nEquipo;
+            return true;
+        }else{
+            return false;
+            }
         }
-
         public Long gettSalarial() {
             return tSalarial;
         }
 
-        public void settSalarial(Long tSalarial) {
-            this.tSalarial = tSalarial;
+        public boolean settSalarial(Long tSalarial) {
+            if(tSalarial==tSalarial){
+                this.tSalarial = tSalarial;
+                return true;
+            }else{
+                return false;
+            }
+
         }
     }
 

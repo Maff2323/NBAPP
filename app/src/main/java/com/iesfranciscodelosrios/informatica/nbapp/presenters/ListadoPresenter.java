@@ -14,7 +14,7 @@ public class ListadoPresenter implements ListadoInterface.Presenter{
 
     public ListadoPresenter(ListadoInterface.View view) {
         this.view = view;
-        person = new PersonRModel();
+        this.person = PersonRModel.getInstance();
     }
 
 
