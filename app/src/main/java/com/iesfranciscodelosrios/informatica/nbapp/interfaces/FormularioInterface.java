@@ -15,6 +15,7 @@ public interface FormularioInterface {
         void requestPermission();
         void launchGallery();
 
+
     }
     public interface Presenter {
         void botonGuardar(PersonR p);

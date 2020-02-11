@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 import androidx.core.content.ContextCompat;
-import com.google.android.material.snackbar.Snackbar;
 import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormularioInterface;
 import com.iesfranciscodelosrios.informatica.nbapp.models.PersonR;
 import com.iesfranciscodelosrios.informatica.nbapp.models.PersonRModel;
@@ -28,11 +27,10 @@ public class FormularioPresenter implements FormularioInterface.Presenter{
     public void botonGuardar(PersonR p){
         view.botonGuardar();
         boolean guardado=true;
-
-        if( model.addEquipo(p)==true){
+        if( model.addEquipo(p)){
 
         }else{
-
+            Log.d("", "ERROR");
         }
     }
 

@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -40,10 +42,13 @@ import androidx.core.app.ActivityCompat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Spinner;
+
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.NombreEquipo;
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonAddSpinner;
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonEliminar;
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.image;
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.spinnerAdd;
-
-
+import static com.iesfranciscodelosrios.informatica.nbapp.R.id.topeSalarial;
 
 
 public class FormularioActivity extends AppCompatActivity implements FormularioInterface.View,View.OnClickListener {
@@ -54,7 +59,7 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     //Calendario para obtener fecha & hora
     public final Calendar c = Calendar.getInstance();
 
-
+    SQLiteDatabase db;
 
     private static final int REQUEST_CAPTURE_IMAGE = 200;
     private static final int REQUEST_SELECT_IMAGE = 201;
@@ -78,6 +83,8 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     private Bitmap bmp;
     TextInputEditText nombre;
     final private int CODE_READ_EXTERNAL_STORAGE_PERMISSION=123;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +119,11 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
         Button button = findViewById(R.id.botonGuardar);
         nombre=(TextInputEditText)findViewById(R.id.nombre);
 
+
+        //nombre = (TextInputEditText) findViewById(R.id.nombre);
+        //topeSalarial = ()findViewById(topeSalarial);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +155,8 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
             }
         });
 
-        Button eliminar = findViewById(R.id.buttonEliminar);
+        Button eliminar = findViewById(buttonEliminar);
+        eliminar.setEnabled(false);
         eliminar.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -262,9 +275,26 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
     }
     @Override
     protected  void onResume(){
+
         super.onResume();
         Log.d(TAG,"onResume...");
+        /*
+        String[] campos = new String[] {"id", "nombre","tSalarial"};
+        String[] args = new String[] {"equipos"};
+
+        Cursor c = db.query("nbaDB", campos, "null=?", args, null, null, null);
+
+        //Nos aseguramos de que existe al menos un registro
+        if (c.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                String id = c.getString( c.getColumnIndex("id") ); // id is column name in db
+                String nombre= c.getString(c.getColumnIndex("nombre"));
+                String tSalarial = c.getString(c.getColumnIndex("tSalarial"));
+            } while(c.moveToNext());
+        */
     }
+
     @Override
     protected  void onPause(){
         super.onPause();
@@ -416,7 +446,31 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                 break;
         }
 
+
     }
 
+    public static void insertar(Context myContext){
+        //Abrimos la base de datos 'DBUsuarios' en modo escritura
+        /*
+        SQLiteDatabase basedatos = new SQLiteDatabase(myContext);
+
+        SQLiteDatabase db = basedatos.getWritableDatabase();
+
+
+        //Si hemos abierto correctamente la base de datos
+        if (db != null) {
+
+            //Insertamos los datos en la tabla Usuarios
+
+            db.execSQL("INSERT INTO Preguntas (nEquipo,tSalarial, imagen) " +
+                    "VALUES ('" + nombre.getNombre() + "', '" + topeSalarial.gettTopeSalarial() + "', '" + image.getImagen() + "')");
+
+
+            //Cerramos la base de datos
+            db.close();
+        }
+
+        */
+    }
 
 }

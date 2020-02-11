@@ -1,11 +1,14 @@
 package com.iesfranciscodelosrios.informatica.nbapp.models;
 
+import java.util.regex.Pattern;
+
 public class PersonR {
 
         private Integer id = null;
         private String image = null;
         private String nEquipo = null;
         private Long tSalarial = null;
+        private String fecha=null;
 
         public PersonR() {
 
@@ -39,25 +42,51 @@ public class PersonR {
         }
 
         public boolean setnEquipo(String nEquipo) {
-            if(nEquipo==""){
-            this.nEquipo = nEquipo;
-            return true;
-        }else{
-            return false;
+            if(nEquipo.isEmpty()) {
+
+                return false;
+            }else{
+                this.nEquipo = nEquipo;
+                return true;
             }
+
+
         }
         public Long gettSalarial() {
             return tSalarial;
         }
 
         public boolean settSalarial(Long tSalarial) {
-            if(tSalarial==tSalarial){
+            String tcorrecta="^([0-9])*$";
+            Pattern patron =Pattern.compile(tcorrecta);
+            String tc =fecha.trim();
+
+            if(!patron.matcher(tc).matches()){
+                this.tSalarial = tSalarial;
+                return false;
+            }else{
                 this.tSalarial = tSalarial;
                 return true;
-            }else{
-                return false;
             }
 
         }
+    public String getFecha() {
+        return fecha;
+    }
+
+    public boolean setFecha(String fecha) {
+        String fcorrecta="^([0-2][0-9]|3[0-1])(\\/)(0[1-9]|1[0-2])\\2(\\d{4})$";
+        Pattern patron =Pattern.compile(fcorrecta);
+        String fc =fecha.trim();
+
+        if(fecha=="" || !patron.matcher(fc).matches()){
+            return false;
+        }else{
+            this.fecha = fecha;
+            return true;
+        }
+
+    }
+
     }
 

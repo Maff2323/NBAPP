@@ -153,17 +153,26 @@ public class PersonRModel extends SQLiteOpenHelper {
         public void onCreate(SQLiteDatabase db) { //se ejecuta una vez y yasta, eliminar caché o el fichero oculto (carpeta data/data/y busca la aplicacion.)
             String CREATE_TABLE_EQUIPO="CREATE TABLE Equipo (" +
                     "id INTEGER PRIMARY  KEY AUTOINCREMENT,"+
-                    "nombre TEXT"+
+                    "nombre TEXT,"+
+                    "tope_Salarial TEXT,"+
+                    "fecha_creacion TEXT,"+
+                    "nombre_dueño TEXT,"+
+                    "conferencia TEXT"+
                     ")";
             db.execSQL(CREATE_TABLE_EQUIPO);
         }
 
         @Override //actualiza si hay un cambio de version
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //db.execSQL("DROP TABLE IF EXISTS Equipos");
+
+            //Se crea la nueva versión de la tabla
+            //db.execSQL(sqlCreate);
 
         }
     public boolean addEquipo(PersonR p){
-        SQLiteDatabase db = getWritableDatabase();
+
+            SQLiteDatabase db = getWritableDatabase();
         boolean correcto=true;
         try {
             // The user might already exist in the database (i.e. the same user created multiple posts).
@@ -183,7 +192,7 @@ public class PersonRModel extends SQLiteOpenHelper {
         } finally {
             db.endTransaction();
         }
-        return correcto;
+        return true;
     }
 
 
