@@ -45,7 +45,21 @@ public class ExampleUnitTest {
         assertEquals(false, p.setFecha("2003"));
         assertEquals(false, p.setFecha(""));
 
-
+    }
+    public void nDueño() {
+        //assertEquals(4, 2 + 2);
+        assertEquals(true, p.setnEquipo("Mark Cuban"));
+        assertEquals(true, p.setnEquipo("Phillips Jr III"));
+        assertEquals(true, p.setnEquipo("Ray 3º"));
+        assertEquals(false, p.setnEquipo(""));
 
     }
+    public void spinner() {
+        //assertEquals(4, 2 + 2);
+        assertEquals(true, p.setSpinner("Apple"));
+        assertEquals(true, p.setSpinner("Samsung"));
+        assertEquals(true, p.setSpinner("Carl's Jr 3"));
+        assertEquals(false, p.setSpinner(" "));
+    }
+
 }

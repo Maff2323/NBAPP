@@ -9,6 +9,9 @@ public class PersonR {
         private String nEquipo = null;
         private Long tSalarial = null;
         private String fecha=null;
+        private String spinner=null;
+        private String nDueño=null;
+
 
         public PersonR() {
 
@@ -83,6 +86,34 @@ public class PersonR {
             return false;
         }else{
             this.fecha = fecha;
+            return true;
+        }
+
+    }
+    public String getSpinner() {
+        return spinner;
+    }
+    public boolean setSpinner(String spinner) {
+
+        if(spinner.isEmpty()) {
+            return false;
+        }else{
+            this.spinner = spinner;
+            return true;
+        }
+
+    }
+    public String getNDueño() {
+        return nDueño;
+    }
+
+
+    public boolean setNDueño(String nDueño) {
+
+        if(spinner.isEmpty()) {
+            return false;
+        }else{
+            this.spinner = spinner;
             return true;
         }
 
