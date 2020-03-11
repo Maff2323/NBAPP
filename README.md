@@ -10,9 +10,6 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 _Solo necesitar tener mas de Android 4.0 acceder a la tienda de Android o Apple y buscar el nombre de la aplicacion y descargar_
 
-```
-Da un ejemplo
-```
 
 ### Instalación 🔧
 
