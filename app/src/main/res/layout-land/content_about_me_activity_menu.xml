@@ -14,7 +14,7 @@
         android:layout_height="36dp"
         android:layout_marginEnd="168dp"
         android:layout_marginBottom="76dp"
-        android:text="TextView"
+        android:text="@string/nPhoneAbout"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="165dp"
         android:layout_height="38dp"
         android:layout_marginBottom="76dp"
-        android:text="TextView"
+        android:text="@string/contactaAbout"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_height="37dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="76dp"
-        android:text="TextView"
+        android:text="@string/emailAbout"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
@@ -50,22 +50,20 @@
         android:layout_width="233dp"
         android:layout_height="36dp"
         android:layout_marginBottom="52dp"
-        android:text="TextView"
+        android:text="@string/action_settings"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="¿Quienes somos?" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="525dp"
         android:layout_height="124dp"
         android:layout_marginBottom="40dp"
-        android:text="TextView"
+        android:text="@string/descripcionAbout"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Somos unas ratas y solo queremos sacaros el dinero gracias por venir" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

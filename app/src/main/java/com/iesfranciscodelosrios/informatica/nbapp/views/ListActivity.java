@@ -5,33 +5,33 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.iesfranciscodelosrios.informatica.nbapp.R;
-import com.iesfranciscodelosrios.informatica.nbapp.interfaces.ListadoInterface;
-import com.iesfranciscodelosrios.informatica.nbapp.presenters.ListadoPresenter;
+import com.iesfranciscodelosrios.informatica.nbapp.interfaces.ListInterface;
+import com.iesfranciscodelosrios.informatica.nbapp.presenters.ListPresenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class ListadoActivity extends AppCompatActivity implements ListadoInterface.View {
+public class ListActivity extends AppCompatActivity implements ListInterface.View {
 
-    String TAG="NBApp/ListadoActivity";
-    private ListadoInterface.Presenter presenter;
+    String TAG="NBApp/ListActivity";
+    private ListInterface.Presenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listado);
+        setContentView(R.layout.activity_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        presenter =new ListadoPresenter(this);
+
+        presenter =new ListPresenter(this);
         // BOTÓN!
-        FloatingActionButton fab = findViewById(R.id.ListadoAnadir); //Encontrar vista por su ID
+        FloatingActionButton fab = findViewById(R.id.ListAdd); //Encontrar vista por su ID
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,9 +75,9 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
 
 
     @Override
-    public void lanzarFormulario() {
+    public void launchForm() {
         Log.d(TAG,"Lanzando Formulario..");
-        Intent intent = new Intent(ListadoActivity.this, FormularioActivity.class);
+        Intent intent = new Intent(ListActivity.this, FormActivity.class);
         startActivity(intent);
     }
     @Override
@@ -89,9 +89,8 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Log.i("", "Nuevo!");
-                Intent intent = new Intent(ListadoActivity.this, AboutMeActivityMenu.class);
-                startActivity(intent);
+                Log.i("", "New!");
+                presenter.AboutUs();
                 return true;
             case R.id.action_settingsConfig:
                 Log.i("", "Config!");
@@ -103,8 +102,7 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
 
             case R.id.action_settingsSearch:
                 Log.i("", "Search!");
-                Intent intentS= new Intent(ListadoActivity.this, SearchActivityMenu.class);
-                startActivity(intentS);
+                presenter.Search();
                 return true;
 
             default:
@@ -125,4 +123,20 @@ public class ListadoActivity extends AppCompatActivity implements ListadoInterfa
         Log.d(TAG,"onSupportnavigateUp...");
         return super.onSupportNavigateUp();
     }
+
+    @Override
+    public void launchSearch() {
+        Log.d(TAG,"Lanzando sobre mi...");
+        Intent intent = new Intent(ListActivity.this,SearchActivityMenu.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void launchAboutUs() {
+        Log.d(TAG,"Lanzando buscar...");
+        Intent intent = new Intent(ListActivity.this,AboutMeActivityMenu.class);
+        startActivity(intent);
+    }
+
+
 }

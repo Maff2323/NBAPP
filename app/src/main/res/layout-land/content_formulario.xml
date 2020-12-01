@@ -5,41 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.FormularioActivity"
-    tools:showIn="@layout/activity_formulario">
+    tools:context=".views.FormActivity"
+    tools:showIn="@layout/activity_form">
 
     <Button
-        android:id="@+id/buttonEliminar"
+        android:id="@+id/buttonDelete"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="132dp"
-        android:text="CANCELAR"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <EditText
-        android:id="@+id/topeSalarial"
+        android:id="@+id/Conference"
         android:layout_width="147dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Conferencia"
+        android:text="@string/conferenceForm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="43dp"
-        tools:text="Conferencia" />
+        tools:layout_editor_absoluteY="43dp" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="54dp"
         android:layout_height="53dp"
         android:layout_marginTop="72dp"
-        app:layout_constraintStart_toStartOf="@+id/imageFecha"
-        app:layout_constraintTop_toTopOf="@+id/imageFecha"
+        app:layout_constraintStart_toStartOf="@+id/imageDate"
+        app:layout_constraintTop_toTopOf="@+id/imageDate"
         app:srcCompat="@android:drawable/ic_secure" />
 
     <ImageView
@@ -52,22 +51,22 @@
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
     <EditText
-        android:id="@+id/nombreDueno"
+        android:id="@+id/nameOwner"
         android:layout_width="243dp"
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Nombre del dueño"
+        android:hint="@string/nOwnerForm"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NombreEquipo" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <ImageView
-        android:id="@+id/imageFecha"
+        android:id="@+id/imageDate"
         android:layout_width="54dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -76,18 +75,18 @@
         app:srcCompat="@android:drawable/ic_menu_day" />
 
     <EditText
-        android:id="@+id/NombreEquipo"
+        android:id="@+id/name"
         android:layout_width="243dp"
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Nombre del Equipo"
+        android:hint="@string/nameForm"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloAnadir" />
+        app:layout_constraintTop_toBottomOf="@+id/titleAdd" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -95,23 +94,23 @@
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloAnadir"
+        app:layout_constraintTop_toBottomOf="@+id/titleAdd"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <EditText
-        android:id="@+id/Fechadecreación"
+        android:id="@+id/DateCreation"
         android:layout_width="242dp"
         android:layout_height="54dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="376dp"
         android:ems="10"
-        android:hint="Fecha de creación"
+        android:hint="@string/DateCreacionSearch"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreDueno" />
+        app:layout_constraintTop_toBottomOf="@+id/nameOwner" />
 
     <TextView
-        android:id="@+id/tituloAnadir"
+        android:id="@+id/titleAdd"
         android:layout_width="198dp"
         android:layout_height="32dp"
         android:layout_marginStart="232dp"
@@ -124,16 +123,16 @@
         tools:text="AÑADIR EQUIPO" />
 
     <EditText
-        android:id="@+id/TopeSalarial"
+        android:id="@+id/TopSalary"
         android:layout_width="242dp"
         android:layout_height="52dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="372dp"
         android:ems="10"
-        android:hint="Tope salarial"
+        android:hint="@string/tSalaryForm"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Fechadecreación" />
+        app:layout_constraintTop_toBottomOf="@+id/DateCreation" />
 
     <ToggleButton
         android:id="@+id/toggleButton"
@@ -141,20 +140,20 @@
         android:layout_height="43dp"
         android:layout_marginEnd="28dp"
         android:text="ToggleButton"
-        android:textOff="ESTE"
-        android:textOn="OESTE"
-        app:layout_constraintEnd_toStartOf="@+id/topeSalarial"
+        android:textOff="@string/EastForm"
+        android:textOn="@string/WestForm"
+        app:layout_constraintEnd_toStartOf="@+id/Conference"
         tools:layout_editor_absoluteY="41dp" />
 
     <Button
-        android:id="@+id/botonGuardar"
+        android:id="@+id/buttonSave"
         android:layout_width="91dp"
         android:layout_height="51dp"
         android:layout_marginStart="408dp"
         android:layout_marginTop="92dp"
-        android:text="GUARDAR"
+        android:text="@string/SaveForm"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SelecionarImagen" />
+        app:layout_constraintTop_toBottomOf="@+id/SelectImage" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -163,18 +162,17 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="144dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topeSalarial"
+        app:layout_constraintTop_toBottomOf="@+id/Conference"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <TextView
-        android:id="@+id/SelecionarImagen"
+        android:id="@+id/SelectImage"
         android:layout_width="121dp"
         android:layout_height="46dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
-        android:text="Selecionar imagen"
+        android:text="@string/selectImageForm"
         app:layout_constraintStart_toStartOf="@+id/toggleButton"
-        app:layout_constraintTop_toBottomOf="@+id/toggleButton"
-        tools:text="Selecionar imagen" />
+        app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

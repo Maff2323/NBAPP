@@ -10,8 +10,8 @@ public class SearchPresenter implements SearchInterface.Presenter{
         this.view = view;
     }
 
-    public void buttonBuscar(){
-        view.buttonBuscar();
+    public void buttonSearch(){
+        view.buttonSearch();
     }
     public void UpButton(){
         view.UpButton();

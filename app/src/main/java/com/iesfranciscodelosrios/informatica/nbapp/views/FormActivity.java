@@ -9,8 +9,8 @@ import android.os.Bundle;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.iesfranciscodelosrios.informatica.nbapp.R;
-import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormularioInterface;
-import com.iesfranciscodelosrios.informatica.nbapp.presenters.FormularioPresenter;
+import com.iesfranciscodelosrios.informatica.nbapp.interfaces.FormInterface;
+import com.iesfranciscodelosrios.informatica.nbapp.presenters.FormPresenter;
 
 import android.app.DatePickerDialog;;
 import android.view.LayoutInflater;
@@ -35,70 +35,70 @@ import static com.iesfranciscodelosrios.informatica.nbapp.R.id.buttonAddSpinner;
 import static com.iesfranciscodelosrios.informatica.nbapp.R.id.spinnerAdd;
 
 
-public class FormularioActivity extends AppCompatActivity implements FormularioInterface.View,View.OnClickListener {
-    private FormularioInterface.Presenter presenter;
-    String TAG="NBApp/FormularioActivity";
+public class FormActivity extends AppCompatActivity implements FormInterface.View,View.OnClickListener {
+    private FormInterface.Presenter presenter;
+    String TAG="NBApp/FormActivity";
     private static final String CERO = "0";
     private static final String BARRA = "/";
     //Calendario para obtener fecha & hora
     public final Calendar c = Calendar.getInstance();
 
     //Variables para obtener la fecha
-    final int mes = c.get(Calendar.MONTH);
-    final int dia = c.get(Calendar.DAY_OF_MONTH);
-    final int anio = c.get(Calendar.YEAR);
+    final int month = c.get(Calendar.MONTH);
+    final int day = c.get(Calendar.DAY_OF_MONTH);
+    final int year = c.get(Calendar.YEAR);
 
     //Widgets
-    EditText Fechadecreación;
-    ImageButton imageFecha;
+    EditText DateCreation;
+    ImageButton imageDate;
 
     private Context myContext=this;
     private Spinner spinner;
     private ArrayAdapter<String> adapter;
     ImageButton buttonAdd;
 
-    TextInputLayout TextNombre;
+    TextInputLayout TextName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_formulario);
+        setContentView(R.layout.activity_form);
 
-        final AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        final AlertDialog.Builder dialog1 = new AlertDialog.Builder(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Widget EditText donde se mostrara la fecha obtenida
-        Fechadecreación = (EditText) findViewById(R.id.Fechadecreación);
+        DateCreation = (EditText) findViewById(R.id.DateCreation);
         //Widget ImageButton del cual usaremos el evento clic para obtener la fecha
-        imageFecha = (ImageButton) findViewById(R.id.imageFecha);
+        imageDate = (ImageButton) findViewById(R.id.imageDate);
         //Evento setOnClickListener - clic
-        imageFecha.setOnClickListener(this);
+        imageDate.setOnClickListener(this);
 
-        TextNombre = (TextInputLayout) findViewById(R.id.textInputLayout);
+        TextName = (TextInputLayout) findViewById(R.id.textInputLayout);
 
-        presenter = new FormularioPresenter(this);
+        presenter = new FormPresenter(this);
         presenter.UpButton();
 
-        Button button = findViewById(R.id.botonGuardar);
+        Button button = findViewById(R.id.buttonSave);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.botonGuardar();
+                presenter.buttonSave();
             }
         });
 
 
-        TextInputEditText nombre = (TextInputEditText) findViewById(R.id.nombre);
-        nombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        TextInputEditText name = (TextInputEditText) findViewById(R.id.name);
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
                     TextInputEditText et = (TextInputEditText) view;
                     Log.d("AppCRUD", et.getText().toString());
-                    if (et.getText().toString().startsWith("Incorrecto")) {
+                    if (et.getText().toString().startsWith("Incorrect")) {
                         TextInputLayout textInputLayout = (TextInputLayout) findViewById(R.id.textInputLayout);
-                        textInputLayout.setError("Nombre incorrecto");
+                        textInputLayout.setError("Name incorrect");
                     } else {
                         TextInputLayout textInputLayout = (TextInputLayout) findViewById(R.id.textInputLayout);
                         textInputLayout.setError("");
@@ -106,35 +106,35 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                 }
             }
         });
-        Button eliminar = findViewById(R.id.buttonEliminar);
-        eliminar.setOnClickListener(new View.OnClickListener() {
+        Button delete = findViewById(R.id.buttonDelete);
+        delete.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                dialogo1.setTitle("ATENCION!");
-                dialogo1.setMessage("Va a eliminar los datos introducidos esta seguro?");
-                dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                dialog1.setTitle("ATENCION!");
+                dialog1.setMessage("Want you delete this?");
+                dialog1.setCancelable(false);
+                dialog1.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                        Aceptar();
+                        Acept();
                     }
 
                 });
-                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                dialog1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int buttonEliminar) {
-                        Cancelar();
+                        Cancel();
                     }
                 });
-                dialogo1.show();
+                dialog1.show();
             }
 
-            public void Aceptar() {
+            public void Acept() {
 
                 finish();
             }
 
-            public void Cancelar() {
+            public void Cancel() {
 
 
             }
@@ -196,9 +196,9 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
 
     }
     @Override
-    public void botonGuardar() {
+    public void buttonSave() {
         Log.d(TAG, "Lanzando Formulario..");
-        Intent intent = new Intent(FormularioActivity.this, ListadoActivity.class);
+        Intent intent = new Intent(FormActivity.this, ListActivity.class);
         startActivity(intent);
     }
 
@@ -259,24 +259,24 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
 
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.imageFecha:
-                    obtenerFecha();
+                case R.id.imageDate:
+                    getDate();
                     break;
             }
         }
 
-        private void obtenerFecha(){
-            DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        private void getDate(){
+            DatePickerDialog pickDate = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     //Esta variable lo que realiza es aumentar en uno el mes ya que comienza desde 0 = enero
-                    final int mesActual = month + 1;
+                    final int ActualMonth = month + 1;
                     //Formateo el día obtenido: antepone el 0 si son menores de 10
-                    String diaFormateado = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
+                    String dayFormat = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
                     //Formateo el mes obtenido: antepone el 0 si son menores de 10
-                    String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
+                    String monthFormat = (ActualMonth < 10)? CERO + String.valueOf(ActualMonth):String.valueOf(ActualMonth);
                     //Muestro la fecha con el formato deseado
-                    Fechadecreación.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                    DateCreation.setText(dayFormat + BARRA + monthFormat + BARRA + year);
 
 
                 }
@@ -284,9 +284,9 @@ public class FormularioActivity extends AppCompatActivity implements FormularioI
                 /**
                  *También puede cargar los valores que usted desee
                  */
-            },anio, mes, dia);
+            },year, month, day);
             //Muestro el widget
-            recogerFecha.show();
+            pickDate.show();
 
         }
 

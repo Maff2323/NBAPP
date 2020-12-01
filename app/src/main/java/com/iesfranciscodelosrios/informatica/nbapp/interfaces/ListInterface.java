@@ -1,11 +1,15 @@
 package com.iesfranciscodelosrios.informatica.nbapp.interfaces;
-public interface ListadoInterface{
+public interface ListInterface{
 
     public interface View {
-        void lanzarFormulario();
+        void launchForm();
+        void launchAboutUs();
+        void launchSearch();
 
     }
     public interface Presenter {
         void onClickAdd();
+        void AboutUs();
+        void Search();
     }
 }

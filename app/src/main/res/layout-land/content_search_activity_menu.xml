@@ -16,44 +16,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TituloFiltrar">
+        app:layout_constraintTop_toBottomOf="@+id/TitleFilter">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Filtrar por Nombre" />
+            android:hint="@string/filterName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/FechaSearch"
+        android:id="@+id/DateSearch"
         android:layout_width="275dp"
         android:layout_height="56dp"
         android:layout_marginTop="52dp"
         android:ems="10"
-        android:hint="Fecha de creación"
+        android:hint="@string/DateCreacionSearch"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Conferencia" />
+        app:layout_constraintTop_toBottomOf="@+id/Conference" />
 
     <Spinner
-        android:id="@+id/Conferencia"
+        android:id="@+id/Conference"
         android:layout_width="275dp"
         android:layout_height="56dp"
         android:layout_marginBottom="48dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBuscar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/TituloFiltrar"
+        android:id="@+id/TitleFilter"
         android:layout_width="98dp"
         android:layout_height="56dp"
         android:layout_marginTop="28dp"
-        android:text="Filtrar"
+        android:text="@string/filterSearch"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -61,11 +61,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonBuscar"
+        android:id="@+id/buttonSearch"
         android:layout_width="104dp"
         android:layout_height="46dp"
         android:layout_marginBottom="88dp"
-        android:text="BUSCAR"
+        android:text="@string/Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.805"

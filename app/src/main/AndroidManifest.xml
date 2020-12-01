@@ -18,12 +18,11 @@
             android:label="SearchActivityMenu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.FormularioActivity"
-            android:label="@string/title_activity_formulario"
-            android:parentActivityName=".views.ListadoActivity"
+            android:name=".views.FormActivity"
+            android:parentActivityName=".views.ListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.ListadoActivity"
+            android:name=".views.ListActivity"
             android:label="@string/title_activity_listado"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.LogoActivity">

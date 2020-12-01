@@ -32,12 +32,13 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
     public final Calendar c = Calendar.getInstance();
 
     //Variables para obtener la fecha
-    final int mes = c.get(Calendar.MONTH);
-    final int dia = c.get(Calendar.DAY_OF_MONTH);
-    final int anio = c.get(Calendar.YEAR);
+    final int month = c.get(Calendar.MONTH);
+    final int day = c.get(Calendar.DAY_OF_MONTH);
+    final int year = c.get(Calendar.YEAR);
+
     //Widgets
-    EditText FechaSearch;
-    ImageButton imageFecha;
+    EditText DateSearch;
+    ImageButton imageDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +47,15 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Widget EditText donde se mostrara la fecha obtenida
-        FechaSearch = (EditText) findViewById(R.id.FechaSearch);
+        DateSearch = (EditText) findViewById(R.id.DateSearch);
         //Widget ImageButton del cual usaremos el evento clic para obtener la fecha
-        imageFecha = (ImageButton) findViewById(R.id.imageFecha);
+        imageDate = (ImageButton) findViewById(R.id.imageDate);
         //Evento setOnClickListener - clic
-        imageFecha.setOnClickListener(this);
+        imageDate.setOnClickListener(this);
 
-        Spinner spinner = (Spinner) findViewById(R.id.Conferencia);
-        String[] letra = {"ESTE","ESTE"};
-        spinner.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,letra));
+        Spinner spinner = (Spinner) findViewById(R.id.Conference);
+        String[] letter = {"EAST","WEST"};
+        spinner.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,letter));
 
         presenter = new SearchPresenter(this);
         presenter.UpButton();
@@ -62,11 +63,11 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
 
 
 
-        Button button = findViewById(R.id.buttonBuscar);
+        Button button = findViewById(R.id.buttonSearch);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.buttonBuscar();
+                presenter.buttonSearch();
             }
         });
     }
@@ -108,9 +109,9 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
     }
 
 
-    public void buttonBuscar() {
+    public void buttonSearch() {
         Log.d(TAG, "Lanzando Formulario..");
-        Intent intent = new Intent(SearchActivityMenu.this, ListadoActivity.class);
+        Intent intent = new Intent(SearchActivityMenu.this, ListActivity.class);
         startActivity(intent);
     }
 
@@ -135,24 +136,24 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
     }
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.imageFecha:
-                obtenerFecha();
+            case R.id.imageDate:
+                getDate();
                 break;
         }
     }
 
-    private void obtenerFecha(){
-        DatePickerDialog recogerFecha = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+    private void getDate(){
+        DatePickerDialog pickDate = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 //Esta variable lo que realiza es aumentar en uno el mes ya que comienza desde 0 = enero
-                final int mesActual = month + 1;
+                final int ActualMonth = month + 1;
                 //Formateo el día obtenido: antepone el 0 si son menores de 10
-                String diaFormateado = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
+                String dayFormat = (dayOfMonth < 10)? CERO + String.valueOf(dayOfMonth):String.valueOf(dayOfMonth);
                 //Formateo el mes obtenido: antepone el 0 si son menores de 10
-                String mesFormateado = (mesActual < 10)? CERO + String.valueOf(mesActual):String.valueOf(mesActual);
+                String monthFormat = (ActualMonth < 10)? CERO + String.valueOf(ActualMonth):String.valueOf(ActualMonth);
                 //Muestro la fecha con el formato deseado
-                FechaSearch.setText(diaFormateado + BARRA + mesFormateado + BARRA + year);
+                DateSearch.setText(dayFormat + BARRA + monthFormat + BARRA + year);
 
 
             }
@@ -160,9 +161,9 @@ public class SearchActivityMenu extends AppCompatActivity implements SearchInter
             /**
              *También puede cargar los valores que usted desee
              */
-        },anio, mes, dia);
+        },year, month, day);
         //Muestro el widget
-        recogerFecha.show();
+        pickDate.show();
 
     }
 

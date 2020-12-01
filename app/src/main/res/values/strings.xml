@@ -1,34 +1,31 @@
 <resources>
-    <string name="app_name" translatable="false">NBAPP</string>
+    <string name="app_name">NBAPP</string>
     <string name="action_settings">About me</string>
-    <string name="title_activity_logo" translatable="false">LogoActivity</string>
-    <string name="title_activity_listado" translatable="false">ListadoActivity</string>
-    <string name="title_activity_formulario" translatable="false">FormularioActivity</string>
-    <string name="descripcionAbout">Somos una compañia consolidada en el mundo deportivo y por tal motivo hemos decidido dar el salto a las aplicaciones para llevar a nuestros usuarios al siguiente nivel infornacion seg a seg</string>
+    <string name="descripcionAbout">Hi my Fieeeends</string>
     <string name="emailAbout">NBApp.gmail.com</string>
-    <string name="contactaAbout">Contacta con nosotros</string>
-    <string name="ntelefonoAbout">935848945</string>
-    <string name="conferenciaFormulario">Conferencia</string>
-    <string name="hintFechaFormu">Fecha de creación</string>
-    <string name="tituloFormu">AÑADIR EQUIPO</string>
-    <string name="tSalarialFormu">Tope salarial</string>
-    <string name="EsteFormu">ESTE</string>
-    <string name="OesteFormu">OESTE</string>
-    <string name="GuardarFormu">GUARDAR</string>
-    <string name="selecImagenFormu">Selecionar imagen</string>
-    <string name="nombreFormu">Nombre del equipo</string>
-    <string name="nDuenoFormu">Nombre del dueño</string>
-    <string name="conferenciaFormu">Conferencia</string>
-    <string name="cancelarFormu">ELIMINAR</string>
-    <string name="filtrarNombre">Filtrar por Nombre</string>
-    <string name="fechaCreacionSearch">Fecha de creación</string>
-    <string name="filtrarSearch">Filtrar</string>
-    <string name="buscarSearch">BUSCAR</string>
-    <string name="titlulo_pickers">Obtener fecha y hora</string>
-    <string name="formato_fecha">dd/mm/yyyy</string>
-    <string name="formato_hora">hh:mm</string>
-    <string name="add_new_option">Añadir</string>
-    <string name="your_option">Nueva opcion</string>
-    <string name="cancel">Cancelar</string>
+    <string name="contactaAbout">Contact us</string>
+    <string name="nPhoneAbout">935848945</string>
+    <string name="conferenceForm">Conference</string>
+    <string name="hintFechaForm">Creation Date </string>
+    <string name="titleForm">ADD TEAMS</string>
+    <string name="tSalaryForm">Salary cap</string>
+    <string name="EastForm">EAST</string>
+    <string name="WestForm">WEST</string>
+    <string name="SaveForm">SAVE</string>
+    <string name="selectImageForm">Select image</string>
+    <string name="nameForm">Team´s name</string>
+    <string name="nOwnerForm">Owner´s name</string>
+    <string name="cancelForm">DELETE</string>
+    <string name="filterName">Filter by name</string>
+    <string name="DateCreacionSearch">Creation Date</string>
+    <string name="filterSearch">Filter</string>
+    <string name="Search">SEARCH</string>
+    <string name="titlePickers">Get date and time</string>
+    <string name="formatDate">dd/mm/yyyy</string>
+    <string name="formatHour">hh:mm</string>
+    <string name="add_new_option">Add new Option</string>
+    <string name="your_option">Your option</string>
+    <string name="cancel">cancel</string>
+    <string name="title_activity_listado">List Activity</string>
 
 </resources>

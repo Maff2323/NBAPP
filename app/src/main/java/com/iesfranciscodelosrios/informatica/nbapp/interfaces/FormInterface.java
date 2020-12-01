@@ -1,14 +1,14 @@
 package com.iesfranciscodelosrios.informatica.nbapp.interfaces;
 
-public interface FormularioInterface {
+public interface FormInterface {
 
     public interface View {
-        void botonGuardar();
+        void buttonSave();
         void UpButton();
 
     }
     public interface Presenter {
-        void botonGuardar();
+        void buttonSave();
         void UpButton();
     }
 }
